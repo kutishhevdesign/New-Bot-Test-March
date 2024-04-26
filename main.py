@@ -21,10 +21,10 @@ COMMANDS = {
 }
 
 FILES = {
-    'IMAGE': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file_example_JPG_100kB.jpg',
-    'DOCUMENT': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file-example_PDF_500_kB.pdf',
-    'VIDEO': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file_example_MP4_480_1_5MG.mp4',
-    'VCARD': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/sample-vcard.txt'
+    'IMAGE': pass,
+    'DOCUMENT': pass,
+    'VIDEO': pass,
+    'VCARD': pass,
 }
 
 
@@ -79,7 +79,7 @@ def handle_new_messages():
             command = list(COMMANDS.keys())[int(command_input) - 1] if command_input.isdigit() else None
 
             if command == 'TEXT':
-                sender['body'] = 'Здравствуйте! Спасибо что обратились в компанию Credit Consulting.\n Мы рады вам помочь. Для ускорения работы вам необходимо отправить одно сообщение с ответами на данные вопросы:\n\n 1.\n 2.\n 3.\n 4.\n 5.\n'
+                sender['body'] = 'Здравствуйте! Спасибо, что обратились в компанию Credit Consulting.\n Для ускорения работы вам необходимо отправить одно сообщение с ответами на данные вопросы:\n\n 1. Вопрос 1\n 2. Вопрос 2\n 3. Вопрос 3\n 4. Вопрос 4\n 5. Вопрос 5\n'
                 endpoint = 'messages/text'
             elif command == 'IMAGE':
                 sender['caption'] = 'Text under the photo.'
