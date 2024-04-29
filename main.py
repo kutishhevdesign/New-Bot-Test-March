@@ -21,10 +21,10 @@ COMMANDS = {
 }
 
 FILES = {
-    'IMAGE': pass,
-    'DOCUMENT': pass,
-    'VIDEO': pass,
-    'VCARD': pass,
+    'IMAGE': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file_example_JPG_100kB.jpg',
+    'DOCUMENT': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file-example_PDF_500_kB.pdf',
+    'VIDEO': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/file_example_MP4_480_1_5MG.mp4',
+    'VCARD': 'C:/Users/miste/Documents/WhatsApp Boy Python/New Bot Test (March 2024)/files/sample-vcard.txt'
 }
 
 
