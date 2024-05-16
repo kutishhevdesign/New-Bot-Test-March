@@ -9,20 +9,20 @@ load_dotenv()  # Load environment variables from a .env file
 app = Flask(__name__)
 
 COMMANDS = {
-    'TEXT': 'Получить текстовую справку',
-    'IMAGE': 'Получить картинку',
-    'DOCUMENT': 'Получить документ',
-    'VIDEO': 'Получить видео',
-    'CONTACT': 'Send contact',
-    'PRODUCT': 'Send product',
-    'GROUP_CREATE': 'Create group',
-    'GROUP_TEXT': 'Simple text message for the group',
-    'GROUPS_IDS': "Get the id's of your three groups"
+    'TEXT': 'Как дела?',
+    'IMAGE': 'Информация',
+    'DOCUMENT': 'Пошел нахуй!',
+    #'VIDEO': 'Получить видео',
+    #'CONTACT': 'Send contact',
+    #'PRODUCT': 'Send product',
+    #'GROUP_CREATE': 'Create group',
+    #'GROUP_TEXT': 'Simple text message for the group',
+    #'GROUPS_IDS': "Get the id's of your three groups"
 }
 
 FILES = {
-    'IMAGE': '/root/whatsappbot/New-Bot-Test-March/files/file_example_JPG_100kB.jpg',
-    'DOCUMENT': '/root/whatsappbot/New-Bot-Test-March/files/file-example_PDF_500_kB.pdf',
+    'IMAGE': '/root/whatsappbot/New-Bot-Test-March/files/info_bot.png',
+    'DOCUMENT': '/root/whatsappbot/New-Bot-Test-March/files/poshel.gif',
     'VIDEO': '/root/whatsappbot/New-Bot-Test-March/files/file_example_MP4_480_1_5MG.mp4',
     'VCARD': '/root/whatsappbot/New-Bot-Test-March/files/sample-vcard.txt'
 }
@@ -79,14 +79,14 @@ def handle_new_messages():
             command = list(COMMANDS.keys())[int(command_input) - 1] if command_input.isdigit() else None
 
             if command == 'TEXT':
-                sender['body'] = 'Вам необходимо отправить сообщение с ответами на данные вопросы. Отредактировать сообщение будет нельзя, внимательно проверяйте информацию. После, бот заного отправит вам сообщение со списком комманд.\n\n1. Ваше полное ФИО\n\n2. Ваш возраст\n\n3. Для какой цели вам необходимы наши услуги? (Кредит/Ипотика)\n\n4. Есть ли у вас ИП или ООО?\n\n'
+                sender['body'] = 'У меня дела хорошо, спасибо, что спросили! Введите номер следущего пункта\n\n'
                 endpoint = 'messages/text'
             elif command == 'IMAGE':
                 sender['caption'] = 'Текст под фотографией.'
                 sender['media'] = FILES['IMAGE'] + ';image/jpeg'
                 endpoint = 'messages/image'
             elif command == 'DOCUMENT':
-                sender['caption'] = 'Текст под PDF документом.'
+                sender['caption'] = 'Хорошего вам дня!'
                 sender['media'] = FILES['DOCUMENT'] + ';application/pdf'
                 endpoint = 'messages/document'
             elif command == 'VIDEO':
@@ -118,7 +118,7 @@ def handle_new_messages():
                 sender['body'] = ',\n '.join(f"{group['id']} - {group['name']}" for group in groups) if groups else 'No groups'
                 endpoint = 'messages/text'
             else:
-                sender['body'] = "Вас приветствует WhatsApp бот компании Credit Consulting. С моей помощью получится ускорить процесс подготовки и как можно быстрее перейти к делу!\nБот все еще в разработке, могут возникнуть баги,спасибо за понимание.\nОтправьте номер желаемой услуги для получения дальнейшей информации.\n\n" + \
+                sender['body'] = "Добрый день! Выберите одну из опций, введя соответсвующий номер:\n\n" + \
                                  '\n'.join(f"{i + 1}. {text}" for i, text in enumerate(COMMANDS.values()))
                 endpoint = 'messages/text'
 
