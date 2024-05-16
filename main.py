@@ -11,7 +11,7 @@ app = Flask(__name__)
 COMMANDS = {
     'TEXT': 'Как дела?',
     'IMAGE': 'Информация',
-    'DOCUMENT': 'Пошел нахуй!',
+    'DOCUMENT': 'Хорошего вам дня!',
     #'VIDEO': 'Получить видео',
     #'CONTACT': 'Send contact',
     #'PRODUCT': 'Send product',
@@ -79,14 +79,14 @@ def handle_new_messages():
             command = list(COMMANDS.keys())[int(command_input) - 1] if command_input.isdigit() else None
 
             if command == 'TEXT':
-                sender['body'] = 'У меня дела хорошо, спасибо, что спросили! Введите номер следущего пункта\n\n'
+                sender['body'] = 'У меня дела хорошо, спасибо, что спросили! Жаль, я всего лишь программа...\n\nВведите номер следущего пункта'
                 endpoint = 'messages/text'
             elif command == 'IMAGE':
-                sender['caption'] = 'Текст под фотографией.'
+                sender['caption'] = 'Тут может быть любой текст под инструкцией. С сылкой на ресусрс, например.'
                 sender['media'] = FILES['IMAGE'] + ';image/jpeg'
                 endpoint = 'messages/image'
             elif command == 'DOCUMENT':
-                sender['caption'] = 'Хорошего вам дня!'
+                sender['caption'] = 'До свидания!'
                 sender['media'] = FILES['DOCUMENT'] + ';application/pdf'
                 endpoint = 'messages/document'
             elif command == 'VIDEO':
